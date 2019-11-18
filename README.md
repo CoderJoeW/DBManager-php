@@ -17,6 +17,27 @@ Create a global variable to access class functions
 $db = new DBManager;
 ```
 
+####Inserting a record
+
+Syntax
+```php
+Insert("table_name",array("key" => "value"));
+```
+
+Example
+```php
+require_once("/path/to/DBManager.php");
+
+$db = new DBManager;
+
+$data = array(
+	"parameter1" => "value1",
+	"parameter2" => "value2"
+);
+
+$db->Insert("my_table_name",$data);
+```
+
 ### Development
 
 Want to contribute? Great!
