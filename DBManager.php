@@ -35,5 +35,25 @@ class DBManager{
 		$query = "INSERT INTO $table_name SET $parameters";
 		mysql_query($query) or die(mysql_error());
 	}
+
+	function MassInsert($table_name,$columns,$data){
+		$parameters = "";
+
+		$len = count($data);
+		$i = 0;
+
+		foreach($data as $value){
+			//If the next iteration is the last iteration
+			//then we don't need to add a comma at the end
+			if(++$i == $len){
+				$parameters .= "('$value')";
+			}else{
+				$parameters .= "('$value'),";
+			}
+		}
+
+		$query = "INSERT INTO $table_name ($columns) VALUES $parameters";
+		mysql_query($query) or die(mysql_error());
+	}
 }
 ?>
